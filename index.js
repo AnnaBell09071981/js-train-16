@@ -9,13 +9,10 @@ function filterStudentsByGrade(students, grade) {
   console.error("Якщо ви бачите це повідомлення, то завдання 1 виконано не правильно");
   console.clear();
   console.log("Завдання: 1 ==============================");
-  let arr = [];
-  arr.filter((name, grade) => {
-    if(students[name, grade] === grade) {
-      arr = students[name, grade];
-    }
-  })
-  return arr;
+  const filterStudents = students.filter((student) => student.grade === grade);
+  filterStudents.forEach((student) => {
+    console.log(student);
+  });
   // Виведемо в консоль критичну помилку з текстом "Якщо ви бачите це повідомлення, то завдання 1 виконано не правильно"
   // Очищення консолі перед виведенням
   // Виведемо в консоль повідомлення для відстеження роботи програми з текстом: "Завдання: 1 =============================="
@@ -132,16 +129,17 @@ function buildMatrix(size) {
     console.error("Аргумент має бути числом!");
     return null;
   }
-  let arrMatr = [];
-  for(let i = 0; i < size.length; i++) {
-    let arrRow = [];
-    for(let j = 0; j < arrMatr.length; j++) {
-      arrRow = Math.round[1, 9];
-      arrMatr.push(arrRow);
-      
+  const matrix = [];
+  for(let i = 0; i < size; i++) {
+    const row = [];
+    for(let j = 0; j < size; j++) {
+      const randomNumber = Math.floor(Math.random() * 10);
+      row.push(randomNumber);
     }
-    console.table(arrMatr);
+    matrix.push(row);
   }
+  console.table(matrix);
+  return matrix;
   // Перевіряємо, чи size є числом.
   // Якщо size не є числом, виведеме в консоль критичну помилку з текстом "Аргумент має бути числом!".
   // Повертаємо null, що свідчить про неможливість обробки вхідних даних.
@@ -225,17 +223,14 @@ displayGroupedInfo([
  *  userInput - об'єкт з введеними користувачем даними.
  */
 function validateUserInput(userInput) {
-  let username, password;
+  let { username, password } = userInput;
+  console.assert(username.includes !== true, "Помилка: ім'я користувача відсутнє!");
+  console.assert(password.includes !== true, "Помилка: пароль відсутній!");
+  console.assert(password.length > 8, "Попередження: пароль має бути довшим за 8 символів!");
+      
+    
   
-  // const hasName = userInput.includes(username);
-  //   console.assert(hasName !== true, "Помилка: ім'я користувача відсутнє!");
-
-  // const hasPassword = userInput.includes(password);
-  //   console.assert(hasPassword !== true, "Помилка: пароль відсутній!");
-  
-  
-    // console.assert((password.length() < 8), "Попередження: пароль має бути довшим за 8 символів!");
-  
+ 
   // Перевіремо умову наявності імені користувача, якщо воно відсутнє виводимо "Помилка: ім'я користувача відсутнє!"
   // Перевіремо умову наявності паролю, якщо він відсутній виводимо "Помилка: пароль відсутній!"
   // Перевірка довжини паролю чи менше вона ніж 8,якщо ні виводимо повідомлення про потенційну проблему з текстом "Попередження: пароль має бути довшим за 8 символів!"
@@ -254,13 +249,14 @@ validateUserInput({ username: "alex", password: "pass" });
  */
 function calculateTotalPrice(products) {
   // Початок вимірювання часу
-  console.time(products);
+  console.time('calculateTotalPrice');
   let total = 0;
-  const result = products.forEach(element => {
-    total = total + element;
-  })
+  const result = products.forEach(product => {
+    total = total + product.price;
+  });
+  console.log("Загальна вартість товарів:", total);
+  console.timeEnd('calculateTotalPrice');
   return result;
-  console.timeEnd();
   // Створення змінної total яка буде нашою загальную ціною, початкове значення нуль
   // Перебираємо кожен об'єкт товару та додаємо ціну товару до загальної вартості
   // Виведення загальної вартості товарів у форматі "Загальна вартість товарів:", total
