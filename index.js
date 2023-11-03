@@ -283,18 +283,16 @@ calculateTotalPrice(products);
  */
 function countVowelsAndConsonants(word) {
   let str = "aeiou";
-  for(const char of word) {
-    word.toLowerCase();
-    if(str[char] === word[char]) {
-      console.count('1');
-      
+  for(let char of word) {
+    char = char.toLowerCase();
+    if(str.includes(char)) {
+      console.count("Голосна");  
+    } else {
+      console.count("Приголосна");
     }
-    if(str[char] !== word[char]) {
-      console.count('2');
-    }
-    
   }
-  
+  console.countReset("Голосна");
+  console.countReset("Приголосна");
   
   // Створюємо рядок де будуть всі голосні "aeiou"
   // Перебираємо кожну літеру у слові за допомогою for of
