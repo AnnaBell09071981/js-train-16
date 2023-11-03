@@ -9,12 +9,13 @@ function filterStudentsByGrade(students, grade) {
   console.error("Якщо ви бачите це повідомлення, то завдання 1 виконано не правильно");
   console.clear();
   console.log("Завдання: 1 ==============================");
-  const result = students.filter((name, grade, students) => {
-      Array.from(students);
-      students[name, grade] === grade;
-      students[name, grade] = grade;
-  });
-  console.log(result);
+  let arr = [];
+  arr.filter((name, grade) => {
+    if(students[name, grade] === grade) {
+      arr = students[name, grade];
+    }
+  })
+  return arr;
   // Виведемо в консоль критичну помилку з текстом "Якщо ви бачите це повідомлення, то завдання 1 виконано не правильно"
   // Очищення консолі перед виведенням
   // Виведемо в консоль повідомлення для відстеження роботи програми з текстом: "Завдання: 1 =============================="
@@ -131,14 +132,15 @@ function buildMatrix(size) {
     console.error("Аргумент має бути числом!");
     return null;
   }
-  let arr = [];
-  for(let i = 0; i < arr.length; i++) {
-    let arr1 = [];
-    for(let j = 0; j < arr1.length; j++) {
-      arr1 = Math.round[1, 9];
+  let arrMatr = [];
+  for(let i = 0; i < size.length; i++) {
+    let arrRow = [];
+    for(let j = 0; j < arrMatr.length; j++) {
+      arrRow = Math.round[1, 9];
+      arrMatr.push(arrRow);
       
     }
-    console.table(arr, arr1);
+    console.table(arrMatr);
   }
   // Перевіряємо, чи size є числом.
   // Якщо size не є числом, виведеме в консоль критичну помилку з текстом "Аргумент має бути числом!".
@@ -165,8 +167,9 @@ buildMatrix(5);
  *  n - стартове число.
  */
 function traceBackward(n) {
-  if(n < 1) {
-    return n - 1;
+  console.log(n);
+  if(n > 1) {
+    n = n - 1;
   }
   console.trace(n);
   // Виводимо поточне число n.
@@ -223,17 +226,15 @@ displayGroupedInfo([
  */
 function validateUserInput(userInput) {
   let username, password;
-  userInput = {
-    username,
-    password,
-  }
-    // console.assert(userInput.includes(username) !== true, "Помилка: ім'я користувача відсутнє!");
+  
+  // const hasName = userInput.includes(username);
+  //   console.assert(hasName !== true, "Помилка: ім'я користувача відсутнє!");
 
+  // const hasPassword = userInput.includes(password);
+  //   console.assert(hasPassword !== true, "Помилка: пароль відсутній!");
   
-    // console.assert(userInput.includes(password) !== true, "Помилка: пароль відсутній!");
   
-  
-    // console.assert(password.size < 8, "Попередження: пароль має бути довшим за 8 символів!");
+    // console.assert((password.length() < 8), "Попередження: пароль має бути довшим за 8 символів!");
   
   // Перевіремо умову наявності імені користувача, якщо воно відсутнє виводимо "Помилка: ім'я користувача відсутнє!"
   // Перевіремо умову наявності паролю, якщо він відсутній виводимо "Помилка: пароль відсутній!"
@@ -255,10 +256,10 @@ function calculateTotalPrice(products) {
   // Початок вимірювання часу
   console.time(products);
   let total = 0;
-  const result = products.forEach((price) => {
-    total = total + price;
+  const result = products.forEach(element => {
+    total = total + element;
   })
-  console.log(result);
+  return result;
   console.timeEnd();
   // Створення змінної total яка буде нашою загальную ціною, початкове значення нуль
   // Перебираємо кожен об'єкт товару та додаємо ціну товару до загальної вартості
@@ -286,14 +287,19 @@ calculateTotalPrice(products);
  */
 function countVowelsAndConsonants(word) {
   let str = "aeiou";
-  for(const liter of word) {
+  for(const char of word) {
     word.toLowerCase();
-    if(str[liter] === word[liter]) {
-      console.count("голосні");
-    } else {
-      console.count("приголосні");
+    if(str[char] === word[char]) {
+      console.count('1');
+      
     }
+    if(str[char] !== word[char]) {
+      console.count('2');
+    }
+    
   }
+  
+  
   // Створюємо рядок де будуть всі голосні "aeiou"
   // Перебираємо кожну літеру у слові за допомогою for of
   // Перетворюємо літеру на малу літеру для порівняння
